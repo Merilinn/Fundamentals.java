@@ -2,7 +2,7 @@ package DataTypesAndVariables;
 
 import java.util.Scanner;
 
-public class P09CenturiesToMinutes {
+public class P09CenturiesToMinutes_Lab {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         short centuries = Short.parseShort(scan.nextLine());

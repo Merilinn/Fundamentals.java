@@ -2,7 +2,7 @@ package DataTypesAndVariables;
 
 import java.util.Scanner;
 
-public class P11RefactorVolumeOfPyramid {
+public class P11RefactorVolumeOfPyramid_Lab {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

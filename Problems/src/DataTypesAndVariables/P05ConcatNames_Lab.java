@@ -2,7 +2,7 @@ package DataTypesAndVariables;
 
 import java.util.Scanner;
 
-public class P05ConcatNames {
+public class P05ConcatNames_Lab {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String firstName = scan.nextLine();

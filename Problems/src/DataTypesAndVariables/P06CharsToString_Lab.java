@@ -2,7 +2,7 @@ package DataTypesAndVariables;
 
 import java.util.Scanner;
 
-public class P06CharsToString {
+public class P06CharsToString_Lab {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         char first = scan.nextLine().charAt(0);

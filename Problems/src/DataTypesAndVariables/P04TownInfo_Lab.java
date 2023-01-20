@@ -2,7 +2,7 @@ package DataTypesAndVariables;
 
 import java.util.Scanner;
 
-public class P04TownInfo {
+public class P04TownInfo_Lab {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String townName = scan.nextLine();

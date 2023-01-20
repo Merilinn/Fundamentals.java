@@ -2,7 +2,7 @@ package DataTypesAndVariables;
 
 import java.util.Scanner;
 
-public class P07ReversedChars {
+public class P07ReversedChars_Lab {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         char first = 0;

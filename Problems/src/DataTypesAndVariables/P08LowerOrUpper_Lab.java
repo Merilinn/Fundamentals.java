@@ -2,7 +2,7 @@ package DataTypesAndVariables;
 
 import java.util.Scanner;
 
-public class P08LowerOrUpper {
+public class P08LowerOrUpper_Lab {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         char first = scan.nextLine().charAt(0);
