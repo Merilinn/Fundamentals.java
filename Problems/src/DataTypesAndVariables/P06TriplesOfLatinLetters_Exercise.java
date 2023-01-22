@@ -7,13 +7,13 @@ public class P06TriplesOfLatinLetters_Exercise {
         Scanner scan = new Scanner(System.in);
         int n = Integer.parseInt(scan.nextLine());
 
-        for (int i = 0; i < n; i++) {
-            char first = (char) ('a' + i);
-            for (int j = 0; j < n; j++) {
-                char second = (char) ('b' + j);
-                for (int k = 0; k < n; k++) {
-                    char third = (char) ('c' + k);
-                    System.out.printf("%c%c%c%n", first, second, third);
+        for (int i = 97; i < 97+n; i++) {
+
+            for (int j = 97; j < 97+n; j++) {
+
+                for (int k = 97; k < 97+n; k++) {
+
+                    System.out.printf("%c%c%c%n", i, j, k);
                 }
 
 
