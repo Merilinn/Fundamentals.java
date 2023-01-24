@@ -26,8 +26,15 @@ public class P01DataTypeFinder_MoreExercise {
                 for (int i = 0; i < input.length(); i++) {
                     char symbol = input.charAt(i);
 
-                    if (symbol == 46 || symbol == 44) {
-                        type = "floating point";
+                    if (symbol == 46 && i!=0 || symbol == 44 && i!=0) {
+                        for (int j = i; j < input.length(); j++) {
+                            symbol = input.charAt(j);
+                            if (symbol >= 48 && symbol <= 57){
+                                type = "floating point";
+                            }else {
+                                type = "string";
+                            }
+                        }
                         break;
                     } else if (symbol >= 58 || symbol <= 47) {
                         type = "string";
@@ -37,13 +44,21 @@ public class P01DataTypeFinder_MoreExercise {
                     }
                 }
                 char sym = input.charAt(0);
-                if (sym == 45) {
+                if (sym == 45 || sym == 43) {
                     for (int j = 1; j < input.length(); j++) {
                         sym = input.charAt(j);
 
                         if (sym == 46 || sym == 44) {
-                            type = "floating point";
-                            break;
+
+                            for (int i = j; i < input.length(); i++) {
+                                sym = input.charAt(i);
+                                if (sym >= 48 && sym <= 57){
+                                    type = "floating point";
+                                }else {
+                                    type = "string";
+                                }
+                            }
+                             break;
                         } else if (sym >= 58 || sym <= 47) {
                             type = "string";
                             break;
