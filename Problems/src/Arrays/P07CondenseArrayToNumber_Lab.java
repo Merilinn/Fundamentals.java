@@ -10,24 +10,19 @@ public class P07CondenseArrayToNumber_Lab {
         int[] numbersArr = Arrays.stream(scan.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
 
-        int sum = 0;
-
-        for (int i = 0; i < numbersArr.length-1; i++) {
-
-            for (int j = 0; j < numbersArr.length - i -1; j++) {
+        for (int i = 0; i < numbersArr.length; i++) {
+            for (int j = 0; j < numbersArr.length - i; j++) {
                 if (j < numbersArr.length - i - 1) {
-                    int firstNum = numbersArr[j];
-                    int secondNum = numbersArr[j + 1];
-                    int result = firstNum + secondNum;
-                    sum += result;
+                    numbersArr[j] = numbersArr[j] + numbersArr[j + 1];
                 }
 
             }
 
-
         }
-        System.out.println(sum);
+        System.out.println(numbersArr[0]);
 
 
     }
+
 }
+
