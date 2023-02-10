@@ -27,8 +27,7 @@ public class P10MultiplyEvensByOdds_Lab {
 
     public static int sumOdd(int number) {
         int sumOdd = 0;
-        while (number !=
-                0) {
+        while (number != 0) {
             int currentNumber = number % 10;
             if (currentNumber % 2 != 0) {
                 sumOdd += currentNumber;
