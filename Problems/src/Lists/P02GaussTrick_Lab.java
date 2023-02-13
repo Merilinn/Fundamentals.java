@@ -9,18 +9,21 @@ import java.util.stream.Collectors;
 public class P02GaussTrick_Lab {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        List <Double> numbers =Arrays.stream(scan.nextLine().split(" ")).map(Double::parseDouble)
+        List <Integer> numbers =Arrays.stream(scan.nextLine().split(" ")).map(Integer::parseInt)
                                                                             .collect(Collectors.toList());
 
 
-            numbers.set(0, numbers.get(0) + numbers.get(numbers.size()-1));
-            numbers.remove(numbers.size()-1);
-            numbers.set(1, numbers.get(1) + numbers.get(numbers.size()-1));
+        for (int i = 0; i < numbers.size(); i++) {
+            if (i + 1 == numbers.size()){
+                break;
+            }
+            numbers.set((i), numbers.get(i) + numbers.get(numbers.size()-1));
             numbers.remove(numbers.size()-1);
 
-        for (Double number : numbers) {
-            String num = new DecimalFormat("0.##").format(number);
-            System.out.print(num + " ");
+        }
+        for (Integer number : numbers) {
+
+            System.out.print(number + " ");
 
         }
 
