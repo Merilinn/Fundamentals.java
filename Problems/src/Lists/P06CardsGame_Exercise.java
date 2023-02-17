@@ -31,34 +31,25 @@ public class P06CardsGame_Exercise {
                 firstPlayer.remove(firstPlayer.get(0));
                 secondPlayer.remove(secondPlayer.get(0));
             }
-
-
         }
         int sum = 0;
         for (Integer cards : winner(firstPlayer, secondPlayer)) {
             sum += cards;
-
         }
         System.out.printf("%s player wins! Sum: %d", player(firstPlayer, secondPlayer), sum);
-
-
     }
-
     public static List<Integer> winner(List<Integer> a, List<Integer> b) {
         if (a.size() != 0) {
             return a;
         } else {
             return b;
         }
-
     }
-
     public static String player(List<Integer> a, List<Integer> b) {
         if (a.size() > b.size()) {
             return "First";
         } else {
             return "Second";
-
         }
     }
 }
