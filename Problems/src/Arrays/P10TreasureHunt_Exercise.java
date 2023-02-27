@@ -1,114 +1,71 @@
 package Arrays;
 
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class P10TreasureHunt_Exercise {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        List<String> lootList = Arrays.stream(scanner.nextLine().split("\\|")).collect(Collectors.toList());
+        List<String> commandList = Arrays.stream(scanner.nextLine().split(" ")).collect(Collectors.toList());
 
-        String[] lootArr = scan.nextLine().split("\\|");
-        String[] newLoot = {};
-        String[] command = scan.nextLine().split(" ");
-        String currentCommand = command[0];
-        boolean isThatItemToTheChest = true;
-
-
-        while (!currentCommand.equals("Yohoho!")) {
-            switch (currentCommand) {
-                case "Loot":
-                    String currentItem = "";
-                    for (int i = 1; i < command.length; i++) {
-                        currentItem = command[i];
-
-                        for (int j = 0; j < lootArr.length; j++) {
-
-                            String itemInChest = lootArr[j];
-                            if (j + 1 < lootArr.length) {
-
-                                if (!itemInChest.equals(currentItem)) {
-                                    isThatItemToTheChest = false;
-                                } else {
-                                    isThatItemToTheChest = true;
-                                    break;
-                                }
-                            } else if (!isThatItemToTheChest) {
-
-
-                                newLoot = new String[lootArr.length + 1];
-                                newLoot[0] = currentItem;
-                                for (int k = 1; k < newLoot.length; k++) {
-                                    newLoot[k] = lootArr[k - 1];
-
-                                }
-                                lootArr = newLoot;
-                                break;
-                            }
-                        }
+        while (!commandList.contains("Yohoho!")) {
+            if (commandList.contains("Loot")) {
+                while (commandList.size() > 1) {
+                    String newLoot = commandList.get(1);
+                    if (!lootList.contains(newLoot)) {
+                        lootList.add(0, newLoot);
+                        commandList.remove(1);
+                    } else {
+                        commandList.remove(1);
                     }
-                    break;
-                case "Drop":
-                    int currentIndex = Integer.parseInt(command[1]);
-
-                    if (currentIndex >= lootArr.length || currentIndex < 0) {
-                        break;
+                }
+            } else if (commandList.contains("Drop")) {
+                int index = Integer.parseInt(commandList.get(1));
+                if (index >= 0 && index <= lootList.size() - 1) {
+                    lootList.add(lootList.get(index));
+                    lootList.remove(lootList.get(index));
+                } else {
+                    commandList = Arrays.stream(scanner.nextLine().split(" ")).collect(Collectors.toList());
+                    continue;
+                }
+            } else if (commandList.contains("Steal")) {
+                int count = Integer.parseInt(commandList.get(1));
+                List <String> stealList = new ArrayList<>();
+                if (count <= lootList.size()) {
+                    while (count != 0) {
+                        String lastElement = lootList.get(lootList.size()-1);
+                        stealList.add(lastElement);
+                        lootList.remove(lootList.size() - 1);
+                        count--;
                     }
-                    String currentLoot = lootArr[currentIndex];
-                    for (int i = currentIndex; i < lootArr.length - 1; i++) {
-                        lootArr[i] = lootArr[i + 1];
-                        if (i + 1 == lootArr.length - 1) {
-                            lootArr[lootArr.length - 1] = currentLoot;
-                        }
+
+                } else {
+                    count = lootList.size();
+                    while (count != 0) {
+                        String lastElement = lootList.get(lootList.size()-1);
+                        stealList.add(lastElement);
+                        lootList.remove(lootList.size() - 1);
+                        count--;
                     }
-                    break;
-                case "Steal":
-                    int countToSteal = Integer.parseInt(command[1]);
-
-                    if (countToSteal > lootArr.length) {
-                        countToSteal = lootArr.length;
-                    }//3 -5
-                    String steal = "";
-                    for (int i = lootArr.length - countToSteal; i < lootArr.length; i++) {
-                        steal = lootArr[i];
-
-                        if (i + 1 == lootArr.length){
-                            System.out.print(steal);
-                            break;
-                        }
-                        System.out.print(steal + ", ");
-
-
-                    }
-                    System.out.println();
-                    newLoot = new String[lootArr.length - countToSteal];
-                    for (int i = 0; i < newLoot.length; i++) {
-                        newLoot[i] = lootArr[i];
-                    }
-                    lootArr = newLoot;
-
-
+                }
+                Collections.reverse(stealList);
+                System.out.println(String.join(", ", stealList));
             }
-            command = scan.nextLine().split(" ");
-            currentCommand = command[0];
-
+            commandList = Arrays.stream(scanner.nextLine().split(" ")).collect(Collectors.toList());
         }
-        double sum = 0;
-        int count = 0;
-        for (int i = 0; i < lootArr.length; i++) {
-            sum++;
-            String loot = lootArr[i];
-            for (int j = 0; j < loot.length(); j++) {
-                count++;
-
-            }
-
-        }
-        if (lootArr.length == 0) {
+        if (lootList.size() == 0) {
             System.out.println("Failed treasure hunt.");
         } else {
-            double gain = count / sum;
-            System.out.printf("Average treasure gain: %.2f pirate credits.", gain);
-
+            int sum = 0;
+            double count = 0;
+            for (int i = 0; i < lootList.size(); i++) {
+                String currentElement = lootList.get(i);
+                sum += currentElement.length();
+                count = i+1;
+            }
+            double total = sum / count;
+            System.out.printf("Average treasure gain: %.2f pirate credits.", total);
         }
     }
 }
-
