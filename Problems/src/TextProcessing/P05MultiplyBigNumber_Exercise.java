@@ -37,16 +37,26 @@ public class P05MultiplyBigNumber_Exercise {
         } else {
             result.reverse();
         }
-
+            int sum = 0;
         for (int i = 0; i < result.length(); i++) {
-            char currentDigit = result.charAt(i);
-            if (currentDigit == '0') {
-                System.out.println("0");
-                break;
-            } else {
-                System.out.println(result);
-                break;
+            int currentDigit = Character.getNumericValue(result.charAt(i));
+            sum += currentDigit;
+        }
+        if (sum == 0) {
+            System.out.println("0");
+
+        } else {
+            for (int i = 0; i <= result.length()*3; i++) {
+                int currentDigit = Character.getNumericValue(result.charAt(0));
+                if (currentDigit == 0){
+                    result.deleteCharAt(0);
+                }else {
+                    break;
+
+                }
             }
+            System.out.println(result);
+
         }
     }
 }
