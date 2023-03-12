@@ -15,7 +15,7 @@ public class P01ValidUsernames_Exercise {
             if (currentUsername.length() >= 3 && currentUsername.length() <= 16){
                 for (int j = 0; j < currentUsername.length(); j++) {
                     char symbol = currentUsername.charAt(j);
-                    if (!Character.isLetter(symbol) && !Character.isDigit(symbol) && symbol != 45 && symbol != 95){
+                    if (!Character.isLetterOrDigit(symbol) && symbol != '-' && symbol != '_'){
                      break;
                     }
                     if (j + 1 == currentUsername.length()){
